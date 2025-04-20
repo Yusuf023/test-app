@@ -15,9 +15,9 @@ export async function middleware(request: NextRequest) {
     if (!isUnprotectedRoute) {
       return NextResponse.redirect(
         new URL(
-          `${process.env.AUTH_APP_LOGIN_URL}?redirectTo=${encodeURIComponent(
-            process.env.APP_URL + "/home"
-          )}`
+          `${process.env.AUTH_APP_LOGIN_URL}?redirectTo=${
+            process.env.APP_URL
+          }/home`
         )
       );
     }
