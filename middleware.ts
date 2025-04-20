@@ -13,12 +13,12 @@ export async function middleware(request: NextRequest) {
   if (!cookie) {
     // Redirect to the sign in page of auth app for protected routes
     if (!isUnprotectedRoute) {
+      const newUrl = new URL(
+        `${process.env.AUTH_APP_LOGIN_URL}${request.nextUrl.search}`
+      );
+      newUrl.searchParams.set("redirectTo", `${process.env.APP_URL}/home`);
       return NextResponse.redirect(
-        new URL(
-          `${process.env.AUTH_APP_LOGIN_URL}?redirectTo=${
-            process.env.APP_URL
-          }/home`
-        )
+        newUrl
       );
     }
   }
