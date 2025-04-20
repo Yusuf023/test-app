@@ -22,7 +22,6 @@ export const SignOutButton = ({ cookie }: { cookie: string }) => {
           },
         }
       );
-      console.log(data);
       if (!error) {
         window.location.href = "/";
       } else {
